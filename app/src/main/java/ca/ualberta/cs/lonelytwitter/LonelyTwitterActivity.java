@@ -58,6 +58,10 @@ public class LonelyTwitterActivity extends Activity {
 
 	private String[] loadFromFile() {
 		ArrayList<String> tweets = new ArrayList<String>();
+		ArrayList<Tweet> tweetList = new ArrayList<Tweet>();
+		NormalTweet myTweet = new NormalTweet();
+		tweetList.add(myTweet);
+
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
 			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -79,6 +83,8 @@ public class LonelyTwitterActivity extends Activity {
 	
 	private void saveInFile(String text, Date date) {
 		try {
+			//NormalTweet myTweet = new NormalTweet("");
+			//myTweet.setMessage = ("I am too looooooo...ng")
 			FileOutputStream fos = openFileOutput(FILENAME,
 					Context.MODE_APPEND);
 			fos.write(new String(date.toString() + " | " + text)
@@ -91,5 +97,7 @@ public class LonelyTwitterActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//catch (TweetTooLongException e){
+		//
 	}
 }
