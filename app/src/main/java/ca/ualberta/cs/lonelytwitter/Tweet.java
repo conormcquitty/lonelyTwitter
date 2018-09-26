@@ -17,6 +17,13 @@ public abstract class Tweet implements Tweetable {
         this.message = "I am default message";
     }
 
+    //Overlading so that we can specify the tweet content
+    Tweet(String message){
+        //'this' gives you context for your declaration.
+        this.date = new Date();
+        this.message = message;
+    }
+
     public Date getDate() {return this.date;}
 
     public String getMessage(){
@@ -32,5 +39,8 @@ public abstract class Tweet implements Tweetable {
         }
     }
 
+    public String toString(){
+        return this.message + "\n" + this.getDate();
+    }
     public abstract Boolean isImportant();
 }
