@@ -2,14 +2,16 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
 
+/**
+ * Class Tweet. Has a message (your tweet), a date and a maximum message.
+ */
+
 public abstract class Tweet implements Tweetable {
 
     private Date date;
     private String message;
     private static final Integer MAX_CHARACTERS = 140;
 
-    //constructor is name of class itself usually. you can have two types, one with no arguments
-    //and one with arguments that uses arguements to set things.
 
     Tweet(){
         //'this' gives you context for your declaration.
@@ -17,19 +19,35 @@ public abstract class Tweet implements Tweetable {
         this.message = "I am default message";
     }
 
-    //Overlading so that we can specify the tweet content
+    /**
+     * Constructor which sets date and message
+     */
     Tweet(String message){
         //'this' gives you context for your declaration.
         this.date = new Date();
         this.message = message;
     }
 
+    /**
+     * Returns the date
+     * @return
+     */
     public Date getDate() {return this.date;}
 
+
+    /**
+     * Returns the Tweet's message
+     * @return
+     */
     public String getMessage(){
         return this.message;
     }
 
+    /**
+     * Function which allows your to set the Tweet's message
+     * @param message
+     * @throws TweetTooLongException
+     */
     public void setMessage (String message) throws TweetTooLongException{
         if (message.length()<= this.MAX_CHARACTERS){
             this.message = message;
@@ -39,8 +57,13 @@ public abstract class Tweet implements Tweetable {
         }
     }
 
+    /**
+     * Function which turns your message and date into a string that your Array List can display easily
+     * @return
+     */
     public String toString(){
         return this.message + "\n" + this.getDate();
     }
+
     public abstract Boolean isImportant();
 }

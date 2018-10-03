@@ -24,6 +24,10 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * Lonely twitter activity class to provide the UI of the application
+ */
+
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "file.sav";
@@ -70,15 +74,16 @@ public class LonelyTwitterActivity extends Activity {
 		clearButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
-
 				tweetList.clear();
-
 				saveInFile();
 				adapter.notifyDataSetChanged();
 			}
 		});
 	}
 
+	/**
+	 *Called on each start of this activity
+	 */
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -95,6 +100,9 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+	/**
+	 * Loads an array list from your file
+	 */
 	private void loadFromFile() {
 
 		try {
@@ -110,13 +118,12 @@ public class LonelyTwitterActivity extends Activity {
 
 		} catch (FileNotFoundException e) {
 			tweetList = new ArrayList<Tweet>();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 
-	//takes a text and date and saves it to our file.
+	/**
+	 *Takes your array list and saves it to a file
+	 */
 	private void saveInFile() {
 		try {
 			//creates a file with FILENAME and tells it what it will say in java syntax
